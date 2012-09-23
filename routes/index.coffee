@@ -118,17 +118,15 @@ exports.indexpost = (req, res)->
 	lang=if req.body.language=="c" then "c" else "cpp"
 	#Generate file name
 	fileid=Math.floor(Math.random()*1000000001);
-	detect_macro=/#include[ \t]*["<]?([^>"]*\/[^>"]*)/.exec(req.body.ccode)
-	if detect_macro?
-		res.json({error:"Server Error bad macro detected"});
-		return
+	compiler=if req.body.arm then "arm-linux-gnueabi-g++-4.6" else "gcc"
+	
 	#Write input to file
 	fs.writeFile "/tmp/test#{fileid}.#{lang}", req.body.ccode, (err)->
 		if err
 			res.json({error:"Server Error"});
 		else
 			# Execute GCC
-			exec "gcc -c #{optimize} -Wa,-ahldn -g /tmp/test#{fileid}.#{lang}", {timeout:10000,maxBuffer: 1024 * 1024*10}, (error, stdout, stderr)->
+			exec "c-preload/compiler-wrapper #{compiler} -c #{optimize} -Wa,-ahldn  -g /tmp/test#{fileid}.#{lang}", {timeout:10000,maxBuffer: 1024 * 1024*10}, (error, stdout, stderr)->
 					if error?
 						#Send error message to the client
 						res.json({error:error.toString()});

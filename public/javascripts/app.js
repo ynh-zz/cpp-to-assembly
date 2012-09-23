@@ -87,6 +87,7 @@ render = function(data) {
 };
 
 $(function() {
+  $("#fileselect").dropdown();
   $("#fileselect li a").click(function(event) {
     var lang, programm;
     event.preventDefault();

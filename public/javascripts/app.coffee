@@ -92,6 +92,7 @@ render=(data)->
 #On page load
 $ ()->
   #bind load sample code
+  $("#fileselect").dropdown()
   $("#fileselect li a").click (event)->
       event.preventDefault()
       $("#loadcode").button('loading')
