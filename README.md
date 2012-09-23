@@ -33,4 +33,6 @@ Vist [http://localhost:8080](http://localhost:8080)
 
 Licence
 -------
-http://creativecommons.org/licenses/by/3.0/
+GPL 3 or later 
+
+http://gplv3.fsf.org/ 
