@@ -3,6 +3,8 @@ C/C++ to assembly visualizer
 
 C/C++ to assembly visualizer calls the command `gcc -c -Wa,-ahldn -g file.cpp`, then visualizes the interleaved C/C++ and assembly code on a fancy HTML web interface.
 
+**See Demo [assembly.ynh.io](http://assembly.ynh.io/)**
+
 Quick start
 -----------
 
