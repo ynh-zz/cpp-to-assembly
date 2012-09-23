@@ -9,6 +9,7 @@ Quick start
 Clone the repo, `git clone https://github.com/ynh/cpp-to-assembly.git`, or [download as ZIP](https://github.com/ynh/cpp-to-assembly/zipball/master).
 
 1. Install the application
+
 ***
 ```
 $ git checkout git clone https://github.com/ynh/cpp-to-assembly.git
@@ -17,7 +18,9 @@ $ npm install -d
 $ npm install coffee-script
 ```
 ***
+
 2. Start the server
+
 ***
 ```
 $ npm start
