@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>C/C++ to Assembly</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width">
+<style>
+            body {
+                padding-top: 60px;
+                padding-bottom: 40px;
+            }
+</style>
+<link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+<script type="text/javascript" src="/javascripts/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+<link rel='stylesheet' href='/stylesheets/sh_style.css'/>
+<link rel='stylesheet' href='/stylesheets/style.css'/>
+</head>
+<body>
+<!--[if lt IE 7]>
+            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+        <![endif]-->
+<!-- This code is taken from http://twitter.github.com/bootstrap/examples/hero.html -->
+<div class="container">
+    <!-- Main hero unit for a primary marketing message or call to action -->
+    <div class="hero-unit" id="main">
+        <h1>C/C++ to Assembly</h1>
+        <p>
+            Just paste your C or C++ code and see how each line is translated in to assembly by gcc (GNU Compiler Collection).
+        </p>
+        <p>
+            The source code is available on <a href="https://github.com/ynh/cpp-to-assembly">GitHub</a>
+        </p>
+        <pre id="error" style="display:none" class="alert alert-error">
+        </pre>
+        <form method="post">
+          
+            <h4 style="float:left">Paste your own code or</h4>  <div class="btn-group"  style="float:left">
+                <button class="btn dropdown-toggle" data-toggle="dropdown" id="loadcode" autocomplete="off">Load sample code <span class="caret"></span></button>
+                <ul class="dropdown-menu" id="fileselect">
+                  <li><a href="#" data-programm="helloworld" data-lang="c">Hello World C programm</a></li>
+                  <li><a href="#" data-programm="bubble" data-lang="c">C Bubble sort</a></li>
+                  <li><a href="#" data-programm="loop" data-lang="c">Simple loop</a></li>
+                </ul>
+              </div>
+            <textarea name="ccode" id="ccode" style="height: 500px;width: 100%"></textarea>
+            <label class="radio">
+            <input type="radio" name="language" id="lang_c" value="c" checked>
+            GNU GCC C </label>
+            <label class="radio">
+            <input type="radio" name="language" id="lang_cpp" value="cpp">GNU GCC C++ </label>
+            <label class="checkbox">
+            <input type="checkbox" value="1" name="optimize"/> Optimize (-O2) works only with simple code</label>
+        </form>
+        <button id="compile" class="btn btn-primary btn-large" data-loading-text="Code is compiling..." autocomplete="off">Translate Code to Assembly</button>
+    </div>
+    <div id="code">
+    </div>
+    <hr>
+    <footer>
+    <p>
+        &copy; ynh - Powered by Node.js
+    </p>
+    </footer>
+</div>
+<!-- /container -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="javascripts/vendor/jquery.js"><\/script>')</script>
+<script src="/javascripts/vendor/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://raw.github.com/DmitryBaranovskiy/raphael/master/raphael-min.js"></script>
+<script type="text/javascript" src="/javascripts/app.js"></script>
+<script type="text/javascript" src="/javascripts/sh_main.min.js"></script>
+<script type="text/javascript" src="/javascripts/sh_cpp.min.js"></script>
+<script type="text/javascript" src="/javascripts/sh_asm.js"></script>
+<script>
+            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g,s)}(document,'script'));
+        </script>
+</body>
+</html>
