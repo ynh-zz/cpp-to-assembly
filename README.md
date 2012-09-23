@@ -30,3 +30,7 @@ $ npm start
 ***
 
 Vist [http://localhost:8080](http://localhost:8080)
+
+Licence
+-------
+http://creativecommons.org/licenses/by/3.0/
