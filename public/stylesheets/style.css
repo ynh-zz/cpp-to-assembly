@@ -12,8 +12,11 @@ a {
 #connection svg {
   z-index: -10;
 }
+#code {
+  position: relative;
+}
 #code pre.glow {
-  background: #eee;
+  background: #ffee79;
 }
 #code pre {
   z-index: 10;
@@ -27,4 +30,9 @@ form h4 {
   margin-top: 4px;
   margin-bottom: 15px;
   margin-right: 12px;
+}
+pre.sh_asm {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
 }

@@ -3,11 +3,13 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "coffee app.coffee"
+    "start": "forever start -c coffee app.coffee",
+    "stop": "forever stop -c coffee app.coffee"
   },
   "dependencies": {
     "express": "3.0.0rc4",
     "sys":"*",
+    "forever":"*",
     "coffee-script":"*",
     "cluster":"*",
   
