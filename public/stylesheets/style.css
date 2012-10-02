@@ -7,13 +7,23 @@ a {
 }
 #connection {
   position: absolute;
-  z-index: -10;
+  z-index: -9;
 }
 #connection svg {
+  z-index: -9;
+}
+#pconnection {
+  position: absolute;
+  z-index: -10;
+}
+#pconnection svg {
   z-index: -10;
 }
 #code {
   position: relative;
+}
+#code pre.pglow {
+  background: #b8ff79;
 }
 #code pre.glow {
   background: #ffee79;
