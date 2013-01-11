@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <inttypes.h>
+
+// With tail recursion
+/*
+uint64_t fact_tail(int number, uint64_t accumulator)
+{
+	if (number == 0)
+		return accumulator;
+
+	return fact_tail(number-1, number*accumulator);
+}
+uint64_t fact(int number)
+{
+	return fact_tail(number, 1);
+}
+*/
+// Plain simple method
+uint64_t fact(int number)
+{
+	if (number == 0)
+		return 1;
+
+	return number*fact(number-1);
+}
+
+int main()
+{
+	printf("Factorial of 15: %lld\n", fact(15));
+}
