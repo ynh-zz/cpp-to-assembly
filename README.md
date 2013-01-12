@@ -8,31 +8,25 @@ C/C++ to assembly visualizer calls the command `gcc -c -Wa,-ahldn -g file.cpp`, 
 Quick start
 -----------
 
-Clone the repo, `git clone https://github.com/ynh/cpp-to-assembly.git`, or [download as ZIP](https://github.com/ynh/cpp-to-assembly/zipball/master).
+1. Clone the repo, `git clone https://github.com/ynh/cpp-to-assembly.git`, or [download as ZIP](https://github.com/ynh/cpp-to-assembly/zipball/master).
 
-Install the application
-
-***
-```
+2. Install the application
+```sh
 $ git checkout git clone https://github.com/ynh/cpp-to-assembly.git
 $ cd cpp-to-assembly
 $ npm install -d
 $ npm install coffee-script
 ```
-***
 
-Start the server
-
-***
-```
+3. Start the server
+```sh
 $ npm start
 ```
-***
 
-Vist [http://localhost:8080](http://localhost:8080)
+4. Visit [localhost:8080](http://localhost:8080)
 
 Licence
 -------
-GPL 3 or later 
+GPL 3 or later
 
 http://gplv3.fsf.org/ 
