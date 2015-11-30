@@ -65,7 +65,7 @@ exports.indexpost = (req, res)->
 	#Generate file name
 	fileid=Math.floor(Math.random()*1000000001);
 	compiler=if req.body.arm then "arm-linux-gnueabi-g++-4.6" else "gcc"
-	asm=if req.body.intel_asm then "masm=intel" else ""
+	asm=if req.body.intel_asm then "-masm=intel" else ""
 	
 	#Write input to file
 	fs.writeFile "/tmp/test#{fileid}.#{lang}", req.body.ccode, (err)->
