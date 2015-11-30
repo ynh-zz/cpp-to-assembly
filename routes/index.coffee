@@ -65,6 +65,7 @@ exports.indexpost = (req, res)->
 	#Generate file name
 	fileid=Math.floor(Math.random()*1000000001);
 	compiler=if req.body.arm then "arm-linux-gnueabi-g++-4.6" else "gcc"
+	asm=if req.body.intel_asm then "masm=intel" else ""
 	
 	#Write input to file
 	fs.writeFile "/tmp/test#{fileid}.#{lang}", req.body.ccode, (err)->
@@ -72,7 +73,7 @@ exports.indexpost = (req, res)->
 			res.json({error:"Server Error"});
 		else
 			# Execute GCC
-			exec "c-preload/compiler-wrapper #{compiler} -std=c99 -c #{optimize} -Wa,-ald  -g /tmp/test#{fileid}.#{lang}", {timeout:10000,maxBuffer: 1024 * 1024*10}, (error, stdout, stderr)->
+			exec "c-preload/compiler-wrapper #{compiler} #{asm} -std=c99 -c #{optimize} -Wa,-ald  -g /tmp/test#{fileid}.#{lang}", {timeout:10000,maxBuffer: 1024 * 1024*10}, (error, stdout, stderr)->
 					if error?
 						#Send error message to the client
 						res.json({error:error.toString()});
