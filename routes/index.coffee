@@ -12,8 +12,8 @@ decodeCode=(asm,code)->
 	files=[]
 	readmode=false
 	currentline=0
-	for asline in asm_lines
 
+	for asline in asm_lines
 		linedata=/^[ ]+[0-9]+ (.*)/m.exec(asline)
 		if linedata?
 			#parse file start markers '.file "filename"'
@@ -50,6 +50,7 @@ decodeCode=(asm,code)->
 						label_data[currentlabel][currentline]+= linedata[1]+"\n"
 						if readmode
 							labels[currentlabel]++
+
 	if currentlabel? and currentlabel < 1
 		delete label_data[currentlabel]
 	{code:code_lines,asm:label_data}
@@ -62,6 +63,7 @@ exports.error404 = (req, res)->
 exports.indexpost = (req, res)->
 	optimize=if req.body.optimize? then "-O2" else ""
 	lang=if req.body.language=="c" then "c" else "cpp"
+
 	#Generate file name
 	fileid=Math.floor(Math.random()*1000000001)
 	compiler=if req.body.arm then "arm-linux-gnueabi-g++-4.6" else "gcc"
