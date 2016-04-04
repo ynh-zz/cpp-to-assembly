@@ -1,4 +1,4 @@
-var AsmBlock, CodeBlock, LineCanvas, codeb, link, pcodeb, render;
+var AsmBlock, CodeBlock, LineCanvas, codeb, link, pcodeb, render, updateCompileString;
 
 CodeBlock = (function() {
 
@@ -199,6 +199,19 @@ render = function(data) {
   }, 380);
 };
 
+updateCompileString = function() {
+  var compilestring = '';
+  compilestring += $("input[name=arm]").is(":checked") ? "arm-linux-gnueabi-g++-4.6 " : "gcc ";
+  compilestring += $("input[name='intel_asm']").is(":checked") ? "-masm=intel " : "";
+  compilestring += "-std=" + $("select[name='standard']").val() + " ";
+  compilestring += "-c ";
+  compilestring += $("input[name='optimize']").is(":checked") ? "-O2 " : "";
+  compilestring += "-Wa,-ald -g ";
+  compilestring += "myCode." + $("input[name=language]:checked").val();
+
+  $('#compilation_string').html(compilestring);
+};
+
 $(function() {
   $("#fileselect").dropdown();
   $("#fileselect li a").click(function(event) {
@@ -220,4 +233,6 @@ $(function() {
     });
     return false;
   });
+  updateCompileString();
+  $("#compilation-form").change(updateCompileString);
 });
