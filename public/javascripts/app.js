@@ -220,4 +220,17 @@ $(function() {
     });
     return false;
   });
+  $("#compilation-form").change(function() {
+    // #{compiler} #{asm} -std=c99 -c #{optimize} -Wa,-ald  -g /tmp/test#{fileid}.#{lang}
+
+    var compiler = $("input[name=arm]:checked").val() === '1' ? "gcc" : "arm-linux-gnueabi-g++-4.6";
+    var asm = $("input[type='intel_asm']").val() === 1 ? "-masm=intel" : "";
+    var std = "-std=c99";
+    var std = "-std=c99";
+    var optimize = $("input[type='optimize']").val() === 1 ? "-O2" : "";
+    var assembleflags = "-Wa,-ald  -g"
+    var
+
+    $('#compilation_string').html('');
+  });
 });
