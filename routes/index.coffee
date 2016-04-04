@@ -89,7 +89,7 @@ exports.indexpost = (req, res)->
 					else
 						#Parse standart output
 						blocks=decodeCode(stdout,req.body.ccode)
-						#Send result as json to the clien
+						#Send result as json to the client
 						res.json(blocks)
 						#Clean up
 						fs.unlink("/tmp/test#{fileid}.#{lang}")
