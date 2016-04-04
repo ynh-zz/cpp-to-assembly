@@ -120,8 +120,6 @@ link = function(asm_code, c_codecode, current, permanent) {
   }
 };
 
-
-
 render = function(data) {
   var asm_code, c_codecode;
   if (data.error != null) {
