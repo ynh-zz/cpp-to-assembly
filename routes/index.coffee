@@ -90,8 +90,8 @@ exports.indexpost = (req, res)->
 										"-std=#{standard} -c #{optimize} -Wa,-ald " +
 										"-g /tmp/test#{fileid}.#{lang}"
 			exec compilecmd,
-					{timeout:10000,maxBuffer: 1024 * 1024*10},
-					(error, stdout, stderr)->
+				{timeout:10000,maxBuffer: 1024 * 1024*10},
+				(error, stdout, stderr)->
 					if error?
 						# send error message to the client
 						res.json({error:error.toString()})
