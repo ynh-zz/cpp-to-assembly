@@ -1,4 +1,4 @@
-var AsmBlock, CodeBlock, LineCanvas, codeb, link, pcodeb, render;
+var AsmBlock, CodeBlock, LineCanvas, codeb, link, pcodeb, render, updateCompileString;
 
 CodeBlock = (function() {
 
@@ -120,6 +120,8 @@ link = function(asm_code, c_codecode, current, permanent) {
   }
 };
 
+
+
 render = function(data) {
   var asm_code, c_codecode;
   if (data.error != null) {
@@ -199,6 +201,19 @@ render = function(data) {
   }, 380);
 };
 
+updateCompileString = function() {
+  var compilestring = '';
+  compilestring += $("input[name=arm]").is(":checked") ? "arm-linux-gnueabi-g++-4.6 " : "gcc ";
+  compilestring += $("input[name='intel_asm']").is(":checked") ? "-masm=intel " : "";
+  compilestring += "-std=" + $("select[name='standard']").val() + " ";
+  compilestring += "-c ";
+  compilestring += $("input[name='optimize']").is(":checked") ? "-O2 " : "";
+  compilestring += "-Wa,-ald -g ";
+  compilestring += "myCode." + $("input[name=language]:checked").val();
+
+  $('#compilation_string').html(compilestring);
+};
+
 $(function() {
   $("#fileselect").dropdown();
   $("#fileselect li a").click(function(event) {
@@ -220,17 +235,6 @@ $(function() {
     });
     return false;
   });
-  $("#compilation-form").change(function() {
-    // #{compiler} #{asm} -std=c99 -c #{optimize} -Wa,-ald  -g /tmp/test#{fileid}.#{lang}
-
-    var compiler = $("input[name=arm]:checked").val() === '1' ? "gcc" : "arm-linux-gnueabi-g++-4.6";
-    var asm = $("input[type='intel_asm']").val() === 1 ? "-masm=intel" : "";
-    var std = "-std=c99";
-    var std = "-std=c99";
-    var optimize = $("input[type='optimize']").val() === 1 ? "-O2" : "";
-    var assembleflags = "-Wa,-ald  -g"
-    var
-
-    $('#compilation_string').html('');
-  });
+  updateCompileString();
+  $("#compilation-form").change(updateCompileString);
 });
