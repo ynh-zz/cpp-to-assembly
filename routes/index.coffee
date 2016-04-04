@@ -67,13 +67,24 @@ exports.indexpost = (req, res)->
 	compiler=if req.body.arm then "arm-linux-gnueabi-g++-4.6" else "gcc"
 	asm=if req.body.intel_asm then "-masm=intel" else ""
 	
+	allowedstandards = [
+		'c++11'
+		'c++14'
+		'c99'
+	]
+	
+	if allowedstandards.indexOf(req.body.standard) > -1
+		standard = req.body.standard
+	else
+		standard = 'c99'
+	
 	#Write input to file
 	fs.writeFile "/tmp/test#{fileid}.#{lang}", req.body.ccode, (err)->
 		if err
 			res.json({error:"Server Error"});
 		else
 			# Execute GCC
-			exec "c-preload/compiler-wrapper #{compiler} #{asm} -std=c99 -c #{optimize} -Wa,-ald  -g /tmp/test#{fileid}.#{lang}", {timeout:10000,maxBuffer: 1024 * 1024*10}, (error, stdout, stderr)->
+			exec "c-preload/compiler-wrapper #{compiler} #{asm} -std=#{standard} -c #{optimize} -Wa,-ald  -g /tmp/test#{fileid}.#{lang}", {timeout:10000,maxBuffer: 1024 * 1024*10}, (error, stdout, stderr)->
 					if error?
 						#Send error message to the client
 						res.json({error:error.toString()});
