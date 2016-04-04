@@ -70,7 +70,7 @@ exports.indexpost = (req, res)->
 	#Write input to file
 	fs.writeFile "/tmp/test#{fileid}.#{lang}", req.body.ccode, (err)->
 		if err
-			res.json({error:"Server Error"});
+			res.json({error:"Server Error: unable to write to temp directory"});
 		else
 			# Execute GCC
 			exec "c-preload/compiler-wrapper #{compiler} #{asm} -std=c99 -c #{optimize} -Wa,-ald  -g /tmp/test#{fileid}.#{lang}", {timeout:10000,maxBuffer: 1024 * 1024*10}, (error, stdout, stderr)->
