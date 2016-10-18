@@ -12,7 +12,7 @@ Quick start
 
 2. Install the application
 ```sh
-$ git checkout git clone https://github.com/ynh/cpp-to-assembly.git
+$ git clone https://github.com/ynh/cpp-to-assembly.git
 $ cd cpp-to-assembly
 $ npm install -d
 $ npm install coffee-script
